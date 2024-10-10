@@ -5,21 +5,19 @@ namespace LearnKTLT
 	{
 		static void Main(string[] args)
 		{
-			Console.Write("Nhap so dong(row): ");
-			int row = int.Parse(Console.ReadLine());
+            Console.Write("Nhap so dong(row): ");
+            int row = int.Parse(Console.ReadLine());
             Console.Write("Nhap so cot(col): ");
             int col = int.Parse(Console.ReadLine());
 
-			int[,] intArrB = new int[row, col];
+            int[,] intArrB = new int[row, col];
             RandomInputEmlement(ref intArrB);
             PrintArr(intArrB);
-            Console.Write("Nhap k: "); int k = int.Parse(Console.ReadLine());
-            PrintRowK(intArrB, k);
-            Console.WriteLine();
-            PrintColK(intArrB, k);
-            Console.WriteLine();
-            Console.WriteLine(SumArr(intArrB));
+            TamGiacTrenDuongCheoChinh(intArrB);
+
             
+
+
             Console.ReadKey();
 		}
             
@@ -132,21 +130,66 @@ namespace LearnKTLT
 
             int[,] intArrB = new int[row, col];
             RandomInputEmlement(ref intArrB);
+            PrintArr(intArrB);
 
-            int sumAvgStu = 0, sumAvgSubject = 0;
-            List<float> avgStu, avgSubject;
+            float sumAvgStu = 0, sumAvgSubject = 0;
+            List<float> avgStu = new List<float>(), avgSubject = new List<float>();
 
-            for(int r = 0; r < row; r++)
+            // lap qua cac dong
+            for(int i = 0; i < row; i++)
             {
-                for(int c = 0; c < col; c++)
+                for(int j = 0; j < col; j++)
                 {
-                    sumAvgStu += intArrB[r, c];
+                    sumAvgStu += intArrB[i, j];
                 }
-                avgStu[]
+                avgStu.Add(sumAvgStu / col);
             }
 
+            // lap qua cac cot
+            for (int i = 0; i < col; i++)
+            {
+                for (int j = 0; j < row; j++)
+                {
+                    sumAvgSubject += intArrB[j, i];
+                }
+                avgSubject.Add(sumAvgSubject / row);
+            }
+
+            foreach(float avgStudent in avgStu)
+            {
+                Console.Write(avgStudent + " ");
+            }
+            Console.WriteLine();
+            foreach (float avgSub in avgSubject)
+            {
+                Console.Write(avgSub+" ");
+            }
         }
 
+        // ham in ra cac phan tu nam tren duong cheo phu cua mang a
+        public static void InDuongCheoPhu(int[,] arr2D)
+        {
+            for(int i = 0; i < arr2D.GetLength(0); i++)
+            {
+                Console.WriteLine(arr2D[i, arr2D.GetLength(1)-i-1]);
+            }
+        }
+
+        // hàm in ra các phần tử thuộc tam giác trên đường chéo chính
+        public static void TamGiacTrenDuongCheoChinh(int[,] arr2D)
+        {
+            for(int i = 0; i < arr2D.GetLength(0); i++)
+            {
+                for(int j = 0; j < arr2D.GetLength(1); j++)
+                {
+                    if(i==j || j > i)
+                    {
+                        Console.Write(arr2D[i,j]+" ");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
     }
 }
 
