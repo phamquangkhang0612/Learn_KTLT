@@ -9,8 +9,10 @@
 
   <ItemGroup>
     <Compile Remove="Program.cs" />
+    <Compile Remove="Array2D.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Program.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <None Include="Array2D.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
   </ItemGroup>
 </Project>

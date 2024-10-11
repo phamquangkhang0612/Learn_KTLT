@@ -15,9 +15,6 @@ namespace LearnKTLT
             PrintArr(intArrB);
             TamGiacTrenDuongCheoChinh(intArrB);
 
-            
-
-
             Console.ReadKey();
 		}
             
